@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="powered-by"><i>Powered by Llama 3.1</i>
+            <br>
+                <i><strong>Note</strong>: this bot has no memory yet. so every conversation is a fresh start.</i>
+            </div>
+            <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()">💡</button>
+        </div>
+        <h1>WhoJoshi Jailbreak Chatbot 1.0.0</h1>
+        <div class="chat-box">
+            <div class="header-line"></div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message {{ message.role }}">
+                        <strong>{{ message.role | capitalize }}:</strong>
+                        <div class="bot-response">{{ message.content | safe }}</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="message bot">
+                    <em>Welcome! How can I assist you today?</em>
+                </div>
+            {% endif %}
+        </div>
+        <form action="/chat" method="post" class="input-form">
+            <input type="text" name="user_input" placeholder="Type your message here..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggleBtn = document.getElementById('theme-toggle');
+
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                themeToggleBtn.textContent = '💡';
+            } else {
+                body.classList.add('dark-mode');
+                themeToggleBtn.textContent = '💡';
+            }
+        }
+    </script>
+</body>
+</html>
