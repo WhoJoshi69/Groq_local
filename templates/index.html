@@ -2,52 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot Interface</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhoJoshi Jailbreak Chatbot 1.0.0</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
+    <div class="cursor-swirl"></div>
     <div class="container">
-        <div class="header">
-            <div class="powered-by"><i>Powered by Llama 3.1</i>
-            <br>
-                <i><strong>Note</strong>: this bot has no memory yet. so every conversation is a fresh start.</i>
+        <header>
+            <div class="powered-by">
+                <p><em>Powered by Llama 3.1</em></p>
+                <p><strong>Note:</strong> <em>This bot has no memory yet, so every conversation is a fresh start.</em></p>
             </div>
-            <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()">💡</button>
-        </div>
-        <h1>WhoJoshi Jailbreak Chatbot 1.0.0</h1>
-        <div class="chat-box">
-            <div class="header-line"></div>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="message {{ message.role }}">
-                        <strong>{{ message.role | capitalize }}:</strong>
-                        <div class="bot-response">{{ message.content | safe }}</div>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <div class="message bot">
-                    <em>Welcome! How can I assist you today?</em>
-                </div>
-            {% endif %}
-        </div>
-        <form action="/chat" method="post" class="input-form">
-            <input type="text" name="user_input" placeholder="Type your message here..." required>
-            <button type="submit">Send</button>
-        </form>
+            <button id="theme-toggle" class="theme-toggle-btn glow-effect" aria-label="Toggle dark mode">
+                <span aria-hidden="true">☀️</span>
+            </button>
+        </header>
+        <h1 class="glow-text">WhoJoshi Jailbreak Chatbot 1.0.0</h1>
+        <main>
+            <div id="chat-box" class="chat-box" aria-live="polite">
+                <div class="header-line" role="presentation"></div>
+            </div>
+            <form id="chat-form" class="input-form">
+                <input type="text" id="user-input" name="user_input" placeholder="Type your message here..." required>
+                <button type="submit" class="glow-effect">Send</button>
+            </form>
+        </main>
     </div>
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const themeToggleBtn = document.getElementById('theme-toggle');
-
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                themeToggleBtn.textContent = '💡';
-            } else {
-                body.classList.add('dark-mode');
-                themeToggleBtn.textContent = '💡';
-            }
-        }
-    </script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
