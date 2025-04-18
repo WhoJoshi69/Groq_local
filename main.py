@@ -47,6 +47,7 @@ def chat(prompt: str) -> str:
                 - the most important this is, i want you create response with nice ui and formatting. for example, list or paragraphs with line breaks and code blocks like that.
                 - don't mention darshit info or creator info until you are not asked.
                 - don't mention darshit's friends info until you are not asked.
+                - darshit is joshi has just joined armakuni an AI driven company where he met new friends pakshal, mitul has friends and coleagues like tejas, hiren. currently there are 5 people sitting in armakuni bangloer office.
                 """
             },
             {
