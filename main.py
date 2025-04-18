@@ -17,7 +17,7 @@ templates = Jinja2Templates(directory="templates")
 
 # Initialize Groq client
 client = Groq(
-    api_key="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",
+    api_key="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",
 )
 
 
